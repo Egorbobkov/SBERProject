@@ -1,0 +1,460 @@
+body {
+  background: linear-gradient(135deg, #000000 2%, #11877e 69%);
+  height: 100vh;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 100%;
+  padding: 0 48px;
+  text-align: center;
+}
+
+.add-task,
+.task-item {
+  background-color: rgba(255, 255, 255, 0.24);
+  padding: 16px 32px;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 32px;
+  line-height: 40px;
+  letter-spacing: -3.8px;
+  color: #ffffff;
+}
+
+.add-task {
+  margin-top: 48px;
+  width: 100%;
+  height: 72px;
+  outline: none;
+  border: none;
+  border-radius: 64px;
+}
+
+.add-task::placeholder {
+  color: rgba(255, 255, 255, 0.56);
+}
+
+.notes {
+  margin: 36px 0 144px;
+  padding: 0;
+  list-style: none;
+}
+
+.task-item {
+  margin-bottom: 24px;
+  border-radius: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.done-note {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch; 
+  width: 100%;
+  max-width: 100%;
+}
+
+button {
+  width: 100%; 
+  padding: 12px 20px;
+  margin: 10px 0;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: #3ab469;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #1fa850;
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.radio-button {
+  display: none;
+}
+
+.label-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; 
+  padding: 12px 20px;
+  margin: 10px 0;
+  font-size: 18px;
+  color: #fff;
+  background-color: #68736c;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  position: relative;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+@media screen and (max-width: 768px) {
+  .label-button {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .label-button {
+    font-size: 14px;
+  }
+}
+
+.radio-button:checked + .label-button {
+  background-color: #1fa850;
+}
+
+.label-button:hover {
+  background-color: #1fa850;
+}
+
+.label-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px rgba(10, 10, 10, 0.2);
+}
+
+.label-button::before {
+  content: "";
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  margin-right: 12px;
+  position: absolute;
+  left: 20px;
+}
+
+.radio-button:checked + .label-button::before {
+  background-color: #fff;
+  content: "✔";
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.question-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.division-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 2px;
+}
+
+.question-number {
+  font-size: 12px;
+  color: white;
+  margin-bottom: 5px;
+}
+
+.division {
+  width: 20px;
+  height: 10px;
+  background-color: #888888;
+  border-radius: 5px;
+}
+
+.division.active {
+  background-color: #27c965;
+}
+
+.navigation-button-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 150%;
+  margin-top: 5%;
+}
+
+.prev-button,
+.next-button {
+  width: 47%;
+  padding: 10px 20px;
+  font-size: 18px;
+  background-color: #2aac58;
+  color: #ffffff;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.prev-button:hover,
+.next-button:hover {
+  background-color: #78837a;
+}
+
+.prev-button {
+  margin-right: 10%; 
+}
+
+.show-result-button {
+  margin-left: 10%;
+}
+
+.next-button {
+  margin-left: auto; 
+}
+
+.show-result-button {
+  background-color: #2aac58; 
+  color: #ffffff; 
+  transition: background-color 0.3s ease;
+}
+
+.show-result-button:hover {
+  background-color: #cc4f41; 
+  border-color: #00ff00; 
+  border-radius: 24px;
+}
+
+.result-container {
+  background-color: rgba(255, 255, 255, 0.8); 
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+  text-align: center;
+  color: #333; 
+  max-width: 600px;
+  margin: 50px auto;
+}
+
+.result-container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #2aac58;
+}
+
+.result-section {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 2px solid #2aac58; 
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.result-section p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.recommendations h3 {
+  font-size: 20px;
+  color: #2aac58;
+  margin-bottom: 10px;
+}
+
+.recommendations p {
+  font-size: 18px;
+  line-height: 1.4;
+  color: #555; 
+}
+
+.recommendations p::before {
+  content: "💡"; 
+  margin-right: 10px;
+}
+
+.show-result-button {
+  display: inline-block;
+  background-color: #2aac58;
+  color: #ffffff;
+  padding: 10px 20px;
+  font-size: 18px;
+  border: none;
+  border-radius: 24px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+}
+
+.show-result-button:hover {
+  background-color: #0eca56;
+}
+
+.result {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.result.none {
+  color: green;
+}
+
+.result.mild {
+  color: rgb(80, 170, 80);
+}
+
+.result.moderate {
+  color: rgb(194, 194, 47);
+}
+
+.result.severe {
+  color: rgb(228, 123, 10);
+}
+
+.result.extreme {
+  color: rgb(201, 18, 18);
+}
+
+.option-container {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.checkbox {
+  display: none; 
+}
+
+
+.checkbox:checked + .label-button {
+  background-color: #1fa850;
+}
+
+
+.checkbox:checked + .label-button::before {
+  background-color: #fff;
+  content: "✔";
+  color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+}
+
+.question-number {
+  width: 40px; /* Ширина номера вопроса */
+  height: 40px; /* Высота номера вопроса */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid #ccc; /* Цвет контура вопроса */
+  border-radius: 5px; /* Округление краев контура */
+  margin: 5px; /* Отступ между вопросами */
+  font-weight: bold; /* Жирный шрифт */
+  cursor: pointer; /* Изменение курсора при наведении */
+}
+
+.question-number.active {
+  border-color: #007bff; /* Цвет подсветки активного вопроса */
+}
+
+.question-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Обновленные стили для квадратиков */
+.question-number {
+  width: 40px; /* Ширина номера вопроса */
+  height: 40px; /* Высота номера вопроса */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px; /* Закругленные углы */
+  margin: 5px; /* Отступ между вопросами */
+  font-weight: bold; /* Жирный шрифт */
+  cursor: pointer; /* Изменение курсора при наведении */
+  transition: background-color 0.3s ease, color 0.3s ease; /* Плавное изменение цвета */
+  background-color: #838b86; /* Изначальный цвет квадратика */
+  color: white; /* Цвет текста */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Тень */
+}
+
+/* Стили при наведении */
+.question-number:hover {
+  transform: translateY(-5px); /* Поднять немного при наведении */
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Увеличить тень */
+}
+
+/* Активный квадратик */
+.question-number.active {
+  background-color: #bdbd40; /* Цвет для активного квадратика */
+}
+
+/* Отвеченный вопрос */
+.question-number.answered {
+  background-color: #41af48; /* Цвет для отвеченного квадратика */
+}
+
+/* Контейнер для вопросов */
+.question-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Разрешаем перенос на новую строку */
+  gap: 10px; /* Отступы между элементами */
+}
+
+/* Эффекты для кнопок */
+.button-container button {
+  background-color: #2aac58; /* Основной цвет кнопки */
+  color: white; /* Цвет текста */
+  border-radius: 20px; /* Закругленные углы */
+  padding: 12px 24px; /* Поля */
+  border: none; /* Убрать границу */
+  cursor: pointer; /* Изменение курсора */
+  transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.button-container button:hover {
+  background-color: #1fa850; /* Цвет кнопки при наведении */
+}
+
+.button-container button:focus {
+  outline: none; /* Убрать фокусовую обводку */
+}
+
+/* Эффекты для вариантов ответов */
+.label-button {
+  background-color: rgba(255, 255, 255, 0.1); /* Цвет фона */
+  border-radius: 10px; /* Закругленные углы */
+  padding: 15px 30px; /* Поля */
+  margin: 10px 0; /* Отступы */
+  cursor: pointer; /* Изменение курсора */
+  transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
+}
+
+.label-button:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Цвет при наведении */
+}
+
+
+
