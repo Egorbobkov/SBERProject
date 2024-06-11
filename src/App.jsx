@@ -418,6 +418,9 @@ selectOption(action) {
 
     return (
   <div className="container">
+     <header className="header">
+          <h1>Тест на депрессию Бека</h1>
+        </header>
     <div className="question-info">
   {divisions.map(({ number }) => (
     <div key={number} className="division-container">
@@ -462,7 +465,7 @@ selectOption(action) {
           <button 
             className="show-result-button" 
             onClick={this.showResult} 
-            disabled={hasEmptyAnswers} // Кнопка не активна при наличии пустых ответов
+            disabled={hasEmptyAnswers} 
           >
             Показать результат
           </button>

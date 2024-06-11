@@ -10,19 +10,19 @@ body {
 .container {
   margin: 0 auto;
   max-width: 100%;
-  padding: 0 48px;
+  padding: 2% 4%;
   text-align: center;
 }
 
 .add-task,
 .task-item {
   background-color: rgba(255, 255, 255, 0.24);
-  padding: 16px 32px;
+  padding: 2% 4%;
   font-weight: 500;
   font-style: normal;
-  font-size: 32px;
-  line-height: 40px;
-  letter-spacing: -3.8px;
+  font-size: 4vw;
+  line-height: 5vw;
+  letter-spacing: -0,3vw;
   color: #ffffff;
 }
 
@@ -69,8 +69,8 @@ body {
 
 button {
   width: 100%; 
-  padding: 12px 20px;
-  margin: 10px 0;
+  padding: 2% 3%;
+  margin: 2% 0;
   font-size: 18px;
   color: #ffffff;
   background-color: #3ab469;
@@ -98,8 +98,8 @@ button:focus {
   align-items: center;
   justify-content: center;
   width: 100%; 
-  padding: 12px 20px;
-  margin: 10px 0;
+  padding: 2% 3%;
+  margin: 2% 0;
   font-size: 18px;
   color: #fff;
   background-color: #68736c;
@@ -110,7 +110,7 @@ button:focus {
   position: relative;
   white-space: pre-wrap;
   word-wrap: break-word;
-  padding-left: 15%;
+  padding-left: 20%;
   padding-right: 15%;
 }
 
@@ -148,17 +148,8 @@ button:focus {
   border-radius: 50%;
   margin-right: 12px;
   position: absolute;
-  left: 20px;
-}
-
-.radio-button:checked + .label-button::before {
-  background-color: #fff;
-  content: "✔";
-  color: #000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 18px;
+  left: 2%;
+  word-break: break-word; 
 }
 
 .question-info {
@@ -198,7 +189,7 @@ button:focus {
   align-items: center;
   width: 100%;
   max-width: 150%;
-  margin-top: 5%;
+  margin-top: 2%;
 }
 
 .prev-button,
@@ -402,7 +393,7 @@ button:focus {
 }
 
 .question-number.active {
-  background-color: #bdbd40; 
+  background-color: #5555527d; 
 }
 
 .question-number.answered {
@@ -424,6 +415,7 @@ button:focus {
   border: none; 
   cursor: pointer; 
   transition: background-color 0.3s ease; 
+  margin-top: 2%;
 }
 
 .button-container button:hover {
@@ -441,11 +433,32 @@ button:focus {
   margin: 10px 0; 
   cursor: pointer; 
   transition: background-color 0.3s ease; 
+  position: relative;
 }
 
 .label-button:hover {
   background-color: rgba(255, 255, 255, 0.2); 
 }
+
+.header {
+  text-align: center; 
+}
+
+.header h1 {
+  font-size: 36px;
+  color: #fff; 
+  margin: 0;
+  text-transform: uppercase; 
+}
+
+.question-info {
+  margin-top: 5%;
+}
+
+.label-button {
+  padding-left: 60px; 
+}
+
 
 
 
