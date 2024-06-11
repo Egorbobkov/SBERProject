@@ -344,11 +344,9 @@ button:focus {
   display: none; 
 }
 
-
 .checkbox:checked + .label-button {
   background-color: #1fa850;
 }
-
 
 .checkbox:checked + .label-button::before {
   background-color: #fff;
@@ -361,20 +359,20 @@ button:focus {
 }
 
 .question-number {
-  width: 40px; /* Ширина номера вопроса */
-  height: 40px; /* Высота номера вопроса */
+  width: 40px; 
+  height: 40px; 
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 2px solid #ccc; /* Цвет контура вопроса */
-  border-radius: 5px; /* Округление краев контура */
-  margin: 5px; /* Отступ между вопросами */
-  font-weight: bold; /* Жирный шрифт */
-  cursor: pointer; /* Изменение курсора при наведении */
+  border: 2px solid #ccc; 
+  border-radius: 5px; 
+  margin: 5px; 
+  font-weight: bold; 
+  cursor: pointer; 
 }
 
 .question-number.active {
-  border-color: #007bff; /* Цвет подсветки активного вопроса */
+  border-color: #007bff; 
 }
 
 .question-container {
@@ -382,78 +380,71 @@ button:focus {
   justify-content: space-between;
 }
 
-/* Обновленные стили для квадратиков */
 .question-number {
-  width: 40px; /* Ширина номера вопроса */
-  height: 40px; /* Высота номера вопроса */
+  width: 40px; 
+  height: 40px; 
   display: flex;
   justify-content: center;
   align-items: center;
-  border-radius: 10px; /* Закругленные углы */
-  margin: 5px; /* Отступ между вопросами */
-  font-weight: bold; /* Жирный шрифт */
-  cursor: pointer; /* Изменение курсора при наведении */
-  transition: background-color 0.3s ease, color 0.3s ease; /* Плавное изменение цвета */
-  background-color: #838b86; /* Изначальный цвет квадратика */
-  color: white; /* Цвет текста */
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); /* Тень */
+  border-radius: 10px; 
+  margin: 5px; 
+  font-weight: bold; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease, color 0.3s ease; 
+  background-color: #838b86; 
+  color: white; 
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2); 
 }
 
-/* Стили при наведении */
 .question-number:hover {
-  transform: translateY(-5px); /* Поднять немного при наведении */
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); /* Увеличить тень */
+  transform: translateY(-5px); 
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3); 
 }
 
-/* Активный квадратик */
 .question-number.active {
-  background-color: #bdbd40; /* Цвет для активного квадратика */
+  background-color: #bdbd40; 
 }
 
-/* Отвеченный вопрос */
 .question-number.answered {
-  background-color: #41af48; /* Цвет для отвеченного квадратика */
+  background-color: #41af48; 
 }
 
-/* Контейнер для вопросов */
 .question-container {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Разрешаем перенос на новую строку */
-  gap: 10px; /* Отступы между элементами */
+  flex-wrap: wrap; 
+  gap: 10px; 
 }
 
-/* Эффекты для кнопок */
 .button-container button {
-  background-color: #2aac58; /* Основной цвет кнопки */
-  color: white; /* Цвет текста */
-  border-radius: 20px; /* Закругленные углы */
-  padding: 12px 24px; /* Поля */
-  border: none; /* Убрать границу */
-  cursor: pointer; /* Изменение курсора */
-  transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
+  background-color: #2aac58; 
+  color: white; 
+  border-radius: 20px; 
+  padding: 12px 24px; 
+  border: none; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
 }
 
 .button-container button:hover {
-  background-color: #1fa850; /* Цвет кнопки при наведении */
+  background-color: #1fa850; 
 }
 
 .button-container button:focus {
-  outline: none; /* Убрать фокусовую обводку */
+  outline: none; 
 }
 
-/* Эффекты для вариантов ответов */
 .label-button {
-  background-color: rgba(255, 255, 255, 0.1); /* Цвет фона */
-  border-radius: 10px; /* Закругленные углы */
-  padding: 15px 30px; /* Поля */
-  margin: 10px 0; /* Отступы */
-  cursor: pointer; /* Изменение курсора */
-  transition: background-color 0.3s ease; /* Плавное изменение цвета при наведении */
+  background-color: rgba(255, 255, 255, 0.1); 
+  border-radius: 10px; 
+  padding: 15px 30px; 
+  margin: 10px 0; 
+  cursor: pointer; 
+  transition: background-color 0.3s ease; 
 }
 
 .label-button:hover {
-  background-color: rgba(255, 255, 255, 0.2); /* Цвет при наведении */
+  background-color: rgba(255, 255, 255, 0.2); 
 }
 
 
