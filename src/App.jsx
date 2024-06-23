@@ -30,6 +30,7 @@ class App extends React.Component {
       answers: Array(21).fill(null), 
       result: null,
       showResult: false,
+      isOnTopPanel: true,
     };
 
     this.assistant = initializeAssistant(() => this.getStateForAssistant());
@@ -65,11 +66,117 @@ class App extends React.Component {
     this.prevQuestion = this.prevQuestion.bind(this);
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.showResult = this.showResult.bind(this);
-    
   }
   componentDidMount() {
     console.log('componentDidMount');
+    document.addEventListener('keydown', this.handleKeyPress);
   }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleKeyPress);
+  }
+
+  handleKeyPress = (event) => {
+    switch (event.key) {
+      case 'ArrowUp':
+        this.handleArrowUp();
+        break;
+      case 'ArrowDown':
+        this.handleArrowDown();
+        break;
+      case 'ArrowLeft':
+        this.handleArrowLeft();
+        break;
+      case 'ArrowRight':
+        this.handleArrowRight();
+        break;
+      case 'Enter':
+        this.handleEnter();
+        break;
+      default:
+        break;
+    }
+  };
+
+  handleArrowUp() {
+    const currentAnswer = this.state.answers[this.state.currentQuestion - 1];
+    if (currentAnswer > 0) {
+      this.setState((prevState) => {
+        const answers = [...prevState.answers];
+        answers[prevState.currentQuestion - 1] = currentAnswer - 1;
+        return { answers };
+      });
+    }
+  }
+
+
+  handleArrowDown() {
+    const currentAnswer = this.state.answers[this.state.currentQuestion - 1];
+    if (currentAnswer === null || currentAnswer === undefined) {
+      this.setState((prevState) => {
+        const answers = [...prevState.answers];
+        answers[prevState.currentQuestion - 1] = 0; 
+        return { answers };
+      });
+    } else if (currentAnswer < 3) { 
+      this.setState((prevState) => {
+        const answers = [...prevState.answers];
+        answers[prevState.currentQuestion - 1] = currentAnswer + 1; 
+        return { answers };
+      });
+    } else {
+      this.setState((prevState) => {
+        const answers = [...prevState.answers];
+        answers[prevState.currentQuestion - 1] = 0; 
+        return { answers };
+      });
+    }
+  }
+  
+
+  handleArrowLeft() {
+    if (this.state.currentQuestion > 1) {
+      this.setState((prevState) => ({
+        currentQuestion: prevState.currentQuestion - 1,
+      }));
+    }
+  }
+
+  handleArrowRight() {
+    if (this.state.currentQuestion < this.state.totalQuestions) {
+      this.setState((prevState) => ({
+        currentQuestion: prevState.currentQuestion + 1,
+      }));
+    }
+  }
+
+  handleEnter() {
+    const currentOptions = this.getCurrentOptions();
+    const currentAnswer = this.state.answers[this.state.currentQuestion - 1];
+  
+    if (currentOptions !== null && currentAnswer !== null) {
+      // Если выбран ответ, переход к следующему вопросу, если не последний, иначе показ результата
+      if (this.state.currentQuestion < this.state.totalQuestions) {
+        this.nextQuestion();
+      } else {
+        this.showResult();
+      }
+    }
+  }
+  
+  getCurrentOptions() {
+    const currentQuestion = this.state.currentQuestion;
+    const questions = this.state.questions;
+  
+    if (questions && questions.length > 0) {
+      const currentQuestionObj = questions[currentQuestion - 1];
+      if (currentQuestionObj && currentQuestionObj.options) {
+        return currentQuestionObj.options;
+      }
+    }
+    return null; // Возвращаем null, если опции не найдены или массив вопросов пустой
+  }
+  
 
   nextQuestion() {
     this.setState(prevState => ({
@@ -86,7 +193,7 @@ class App extends React.Component {
   handleOptionChange(event) {
     const { value } = event.target;
     const index = parseInt(value, 10);
-  
+
     this.setState((prevState) => {
       const answers = [...prevState.answers];
       if (answers[prevState.currentQuestion - 1] === index) {
@@ -417,22 +524,24 @@ selectOption(action) {
     }
 
     return (
-  <div className="container">
-     <header className="header">
+      <div className="container">
+        <header className="header">
           <h1>Тест на депрессию Бека</h1>
         </header>
-    <div className="question-info">
-  {divisions.map(({ number }) => (
-    <div key={number} className="division-container">
-      <div 
-        className={`question-number ${this.state.currentQuestion === number ? 'active' : ''} ${this.state.answers[number - 1] !== null ? 'answered' : ''}`}
-        onClick={() => this.setState({ currentQuestion: number })}
-      >
-        {number}
-      </div>
-    </div>
-  ))}
-</div>
+        <div className="question-info">
+          {divisions.map(({ number }) => (
+            <div key={number} className="division-container">
+              <div
+                className={`question-number ${
+                  this.state.currentQuestion === number ? 'active' : ''
+                } ${this.state.answers[number - 1] !== null ? 'answered' : ''}`}
+                onClick={() => this.setState({ currentQuestion: number })}
+              >
+                {number}
+              </div>
+            </div>
+          ))}
+        </div>
 
 
     <div className="button-container">
@@ -487,6 +596,3 @@ selectOption(action) {
   }
 }
 export default App;
-
-
-
