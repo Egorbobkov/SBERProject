@@ -9,7 +9,7 @@ const initializeAssistant = (getState) => {
       initPhrase: `Запусти ${process.env.REACT_APP_SMARTAPP}`,
       getState,
       nativePanel: {
-        defaultText: 'ччччччч',
+        defaultText: 'Добро пожаловать!',
         screenshotMode: false,
         tabIndex: -1,
       },
@@ -66,6 +66,7 @@ class App extends React.Component {
     this.prevQuestion = this.prevQuestion.bind(this);
     this.handleOptionChange = this.handleOptionChange.bind(this);
     this.showResult = this.showResult.bind(this);
+    this.resetTest = this.resetTest.bind(this);
   }
   componentDidMount() {
     console.log('componentDidMount');
@@ -155,7 +156,6 @@ class App extends React.Component {
     const currentAnswer = this.state.answers[this.state.currentQuestion - 1];
   
     if (currentOptions !== null && currentAnswer !== null) {
-      // Если выбран ответ, переход к следующему вопросу, если не последний, иначе показ результата
       if (this.state.currentQuestion < this.state.totalQuestions) {
         this.nextQuestion();
       } else {
@@ -174,7 +174,7 @@ class App extends React.Component {
         return currentQuestionObj.options;
       }
     }
-    return null; // Возвращаем null, если опции не найдены или массив вопросов пустой
+    return null; 
   }
   
 
@@ -336,6 +336,16 @@ selectOption(action) {
     const result = this.evaluateAnswers(answers);
     this.setState({ result, showResult: true });
   }
+
+  resetTest() {
+    this.setState({
+      currentQuestion: 1,
+      answers: Array(21).fill(null), 
+      result: null,
+      showResult: false,
+    });
+  }
+
   
   getRecommendationsClass(result) {
     switch (result) {
@@ -518,7 +528,8 @@ selectOption(action) {
             {this.state.result === "тяжелая депрессия" && (
               <p>Рекомендации: Срочно обратитесь за медицинской помощью. Тяжелая депрессия требует немедленного вмешательства специалистов для предотвращения серьезных последствий.</p>
             )}
-          </div>
+           </div>
+           <button className="retry-button" onClick={this.resetTest}>Пройти тест заново</button>
         </div>
       );
     }
@@ -587,10 +598,11 @@ selectOption(action) {
     </div>
 
     {this.state.result && (
-      <div className="result">
-        <h2>Ваш результат: {this.state.result}</h2>
-      </div>
-    )}
+  <div className="result">
+    <h2>Ваш результат: {this.state.result}</h2>
+  </div>
+)}
+
   </div>
 );
   }
